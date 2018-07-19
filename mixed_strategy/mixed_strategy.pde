@@ -346,7 +346,7 @@ int evaluateMove(int[][] b, int te, int x, int y)
   int positionPoint = tensu[x][y];
 
   // とりあえず、「場所の点数が高くて石をたくさんひっくり返せる手」を「良い手」と判定する。
-  result = positionPoint + stoneCount;
+  result = positionPoint + stoneCount - nextBestMove.value + nextMoveCount;
 
   println( "( " + x + "," + y + ") = " + result);
 
@@ -358,7 +358,7 @@ int evaluateMove(int[][] b, int te, int x, int y)
 Move getBestMove(int[][] b, int te)
 {
   Move result = new Move();
-  result.value = -5000;
+  result.value = -5000;        //-で巨大な数字なら何でもいい
   for(int y=1; y<=8; y++)
     for(int x=1; x<=8; x++)
     {
